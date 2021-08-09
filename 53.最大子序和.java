@@ -8,12 +8,12 @@
 class Solution {
     public int maxSubArray(int[] nums) {
         int n = nums.length;
-        int[] dp = new int[n];
-        dp[0] = nums[0];
-        for(int i = 1; i < n; i++){
-            dp[i] = Math.max(nums[i], nums[i] + dp[i-1]);
+        int pre = 0, maxAns = nums[0];
+        for(int i = 0; i < n; i++){
+            pre = Math.max(nums[i], pre + nums[i]);
+            maxAns = Math.max(maxAns, pre);
         }
-        return dp[n - 1];
+        return maxAns;
     }
 }
 // @lc code=end
